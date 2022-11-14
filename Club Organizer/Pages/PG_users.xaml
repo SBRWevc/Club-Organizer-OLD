@@ -1,0 +1,354 @@
+﻿<Page x:Class="Club_Organizer.Pages.PG_users"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+	  FontFamily="Century Gothic"
+      d:DesignHeight="900" 
+	  d:DesignWidth="1600"
+	  Background="White">
+	<Grid>
+		<!--Кнопка добавления сотрудника-->
+		<materialDesign:DialogHost x:Name="add_user_dialog"
+								   Placement="Center"
+								   HorizontalContentAlignment="Center"
+								   VerticalContentAlignment="Center"
+								   DialogTheme="Light" 
+								   CloseOnClickAway="True"
+								   materialDesign:DialogMargin="50" 
+								   DialogClosing="add_user_dialog_DialogClosing">
+			<materialDesign:DialogHost.DialogContent>
+				<Grid Height="500"
+						  Width="960"
+						  Background="White">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="1.2*"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="60"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+					<TextBlock Text="Создание нового пользователя"
+								   HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   Grid.Column="0"
+								   Grid.ColumnSpan="2"
+								   FontWeight="Bold"
+								   Foreground="Coral"
+								   FontSize="30"
+								   Margin="0 10 0 0"/>
+					<!--Вывод конечного вида данных пользователя-->
+					<StackPanel VerticalAlignment="Center"
+										Margin="0 0 0 80"
+										Grid.Row="1">
+						<Image x:Name="avatar_left"
+								   Source="/res/avatar/man.png"
+								   RenderOptions.BitmapScalingMode="HighQuality"
+								   Width="180"
+								   Height="180"/>
+						<StackPanel Orientation="Horizontal"
+										HorizontalAlignment="Center"
+										Margin="10">
+							<TextBlock x:Name="lastname_left"
+										   FontWeight="Bold"
+										   FontSize="20"
+										   Foreground="Black"/>
+							<TextBlock Text=" "/>
+							<TextBlock x:Name="name_left"
+										   FontWeight="Bold"
+										   FontSize="20"
+										   Foreground="Black"/>
+							<TextBlock Text=" "/>
+							<TextBlock x:Name="secondname_left"
+										   FontWeight="Bold"
+										   FontSize="20"
+										   Foreground="Black"/>
+						</StackPanel>
+						<TextBlock HorizontalAlignment="Center"
+									   x:Name="position_left"
+									   FontSize="15"
+									   Foreground="Black"/>
+					</StackPanel>
+					<Button x:Name="save_userdata"
+								Grid.Column="0"
+								Grid.Row="1"
+								Background="White"
+								Style="{StaticResource MaterialDesignPaperButton}"
+								materialDesign:ElevationAssist.Elevation="Dp0"
+								VerticalAlignment="Bottom"
+								HorizontalAlignment="Center"
+								Margin="0 0 0 34"
+								Content="Сохранить"
+								Click="add_user_Click"/>
+					<!--Ввод данных пользователя-->
+					<Grid Grid.Column="1"
+							  VerticalAlignment="Center"
+							  Margin="0 0 30 0"
+							  Grid.Row="1">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<TextBox x:Name="lastname"
+									 Grid.Row="0"
+									 Background="White"
+									 materialDesign:HintAssist.Background="White"
+									 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+									 materialDesign:HintAssist.Hint="Введите фамилию"
+									 Margin="5"/>
+						<TextBox x:Name="name"
+									 Grid.Row="1"
+									 Background="White"
+									 materialDesign:HintAssist.Background="White"
+									 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+									 materialDesign:HintAssist.Hint="Введите имя"
+									 Margin="5"/>
+						<TextBox x:Name="secondname"
+									 Grid.Row="2"
+									 Background="White"
+									 materialDesign:HintAssist.Background="White"
+									 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+									 materialDesign:HintAssist.Hint="Введите отчество"
+									 Margin="5"/>
+						<StackPanel Orientation="Horizontal"
+											HorizontalAlignment="Center"
+											Grid.Row="3"
+											Margin="7">
+							<RadioButton x:Name="gender_man"
+											 Background="White"
+											 Style="{StaticResource MaterialDesignTabRadioButton}"
+											 Content="Мужской"
+											 IsChecked="True"
+											 Margin="0 0 20 0"
+											 Click="gender_man_Click"/>
+							<RadioButton x:Name="gender_woman"
+											 Background="White"
+											 Style="{StaticResource MaterialDesignTabRadioButton}"
+											 Content="Женский"
+											 IsChecked="False"
+											 Margin="20 0 0 0"
+											 Click="gender_woman_Click"/>
+						</StackPanel>
+						<ComboBox x:Name="position"
+									  Grid.Row="4"
+									  Grid.Column="1"
+									  Background="White"
+									  materialDesign:HintAssist.Background="White"
+									  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+									  materialDesign:HintAssist.Hint="Выберете должность сотрудника"
+									  Margin="5">
+							<TextBlock Text="Управляющий"/>
+							<TextBlock Text="Директор"/>
+							<TextBlock Text="Администратор"/>
+							<TextBlock Text="Тренер"/>
+						</ComboBox>
+						<TextBox x:Name="login"
+									 Grid.Row="5"
+									 Grid.Column="1"
+									 Background="White"
+									 materialDesign:HintAssist.Background="White"
+									 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+									 materialDesign:HintAssist.Hint="Введите логин сотрудника"
+									 Margin="5"/>
+						<PasswordBox x:Name="pass"
+										 Grid.Row="6"
+										 Grid.Column="1"
+										 Background="White"
+										 materialDesign:HintAssist.Background="White"
+										 Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"
+										 materialDesign:HintAssist.Hint="Введите пароль сотрудника"
+										 Margin="5"/>
+					</Grid>
+				</Grid>
+			</materialDesign:DialogHost.DialogContent>
+			<Grid Margin="20 0 20 0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="43"/>
+					<RowDefinition Height="35"/>
+					<RowDefinition/>
+					<RowDefinition Height="50"/>
+				</Grid.RowDefinitions>
+				<!--Название страницы-->
+				<TextBlock Text="Пользователи"
+						   Grid.Row="0"
+						   HorizontalAlignment="Center"
+						   VerticalAlignment="Center"
+						   Style="{StaticResource MaterialDesignBody1TextBlock}"
+						   FontWeight="Bold"
+						   FontSize="20"
+						   Foreground="Coral"
+						   Height="33"/>
+				<!--Заголовки-->
+				<Grid Grid.Row="1"
+					  VerticalAlignment="Center"
+					  Height="35">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="60"/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+					<TextBlock Text="ID"
+							   Grid.Column="1"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   FontSize="14"/>
+					<TextBlock Text="Фамилия"
+							   Grid.Column="2"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   FontSize="14"/>
+					<TextBlock Text="Имя"
+							   Grid.Column="3"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   FontSize="14"/>
+					<TextBlock Text="Отчество"
+							   Grid.Column="4"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   FontSize="14"/>
+					<TextBlock Text="Пол"
+							   Grid.Column="5"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   FontSize="14"/>
+					<TextBlock Text="Должность"
+							   Grid.Column="6"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   FontSize="14"/>
+					<StackPanel Grid.Column="7"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Center">
+						<TextBlock Text="Повышенные"
+								   HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   FontSize="14"/>
+						<TextBlock Text="права"
+								   HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   FontSize="14"/>
+					</StackPanel>
+					<TextBlock Text="Логин"
+							   Grid.Column="8"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   FontSize="14"/>
+				</Grid>
+				<StackPanel Margin="0 0 0 0"
+							Grid.Row="2">
+					<Path Data="M240,130 L345,130" 
+						  Margin="0 5 0 3"
+						  Height="1" 
+						  Grid.Row="1" 
+						  Stroke="Black" 
+						  Stretch="Fill" 
+						  VerticalAlignment="Center" 
+						  Width="{Binding ElementName=data_users, Path=Width}"/>
+					<Grid>
+						<!--Таблица сотрудников-->
+						<DataGrid x:Name="data_users"
+								  Background="White"
+								  Style="{StaticResource MaterialDesignDataGrid}"
+								  HeadersVisibility="None"
+								  ColumnWidth="1*"
+								  VerticalAlignment="Top"
+								  TextBlock.TextAlignment="Center"
+								  CanUserAddRows="False"
+								  CanUserDeleteRows="False"
+								  CanUserReorderColumns="False"
+								  Foreground="Gray">
+							<DataGrid.Columns>
+								<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+														ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+														EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+														IsReadOnly="False">
+									<DataGridCheckBoxColumn.Width>
+										60
+									</DataGridCheckBoxColumn.Width>
+								</DataGridCheckBoxColumn>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Grid>
+					<!--Кнопка добавления сотрудника-->
+					<Button x:Name="add_user"
+							Background="White"
+							BorderBrush="White"
+							Style="{StaticResource MaterialDesignPaperButton}"
+							Content="{materialDesign:PackIcon Plus, Size=30}"
+							Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+							materialDesign:ElevationAssist.Elevation="Dp0"
+							materialDesign:ButtonAssist.CornerRadius="22"
+							ToolTip="Добавить нового пользователя"
+							Margin="5"
+							Padding="5"
+							Height="45"
+							Width="45"
+							Cursor="Hand"/>
+				</StackPanel>
+				<!--Кнопка обновления данных-->
+				<Button x:Name="settings_update"
+						Grid.Row="3"
+						VerticalAlignment="Bottom"
+						HorizontalAlignment="Right"
+						Margin="20 5 0 10"
+						Background="White"
+						BorderBrush="White"
+						Style="{StaticResource MaterialDesignPaperButton}" 
+						materialDesign:ElevationAssist.Elevation="Dp0"
+						materialDesign:ButtonAssist.CornerRadius="8"
+						Content="{materialDesign:PackIcon Update, Size=20}"
+						ToolTip="Обновить"
+						Cursor="Hand"
+						Padding="6"
+						Click="settings_update_Click"/>
+				<!--Кнопка сохранения изменений-->
+				<Button x:Name="settings_check"
+						Grid.Row="3"
+						VerticalAlignment="Bottom"
+						HorizontalAlignment="Right"
+						Margin="20 5 40 10"
+						Background="White"
+						BorderBrush="White"
+						Style="{StaticResource MaterialDesignPaperButton}" 
+						materialDesign:ElevationAssist.Elevation="Dp0"
+						materialDesign:ButtonAssist.CornerRadius="8"
+						Content="{materialDesign:PackIcon Check, Size=20}"
+						ToolTip="Сохранить"
+						Cursor="Hand"
+						Padding="6"
+						Click="settings_check_Click"/>
+				<!--Кнопка удаления записи-->
+				<Button x:Name="settings_delete"
+						Grid.Row="3"
+						VerticalAlignment="Bottom"
+						HorizontalAlignment="Right"
+						Margin="20 5 80 10"		
+						Background="White"
+						BorderBrush="White"
+						Style="{StaticResource MaterialDesignPaperButton}" 
+						materialDesign:ElevationAssist.Elevation="Dp0"
+						materialDesign:ButtonAssist.CornerRadius="8"
+						Content="{materialDesign:PackIcon DeleteOutline, Size=20}"
+						ToolTip="Сохранить"
+						Cursor="Hand"
+						Padding="6"
+						Click="settings_delete_Click"/>
+			</Grid>
+		</materialDesign:DialogHost>
+	</Grid>
+</Page>
