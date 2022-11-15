@@ -1,11 +1,4 @@
-﻿using Club_Organizer.Pages;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SQLite;
 
 namespace Club_Organizer.Class
 {
@@ -18,9 +11,9 @@ namespace Club_Organizer.Class
 			string conn = @"Data Source=DB/users.db;Version=3;";
 
 			// -Запросы к БД- \\
-			string query_data_userdata = "SELECT id, lastname," +
-				"name, secondname, gender, position," +
-				"root, login FROM userdata";
+			string query_data_userdata = "SELECT id, Фамилия," +
+				"Имя, Отчество, Пол, Должность," +
+				"Права, Логин FROM userdata";
 
 
 			SQLiteConnection conn_data = new SQLiteConnection(conn);

@@ -8,9 +8,9 @@ namespace Club_Organizer.Class
 	internal class CL_update_cur_user
 	{
 		static string db_conn = @"Data Source=DB/users.db;Version=3;";
-		static string inc_login = "UPDATE userdata SET login=@login WHERE id=@id";
-		static string inc_pass = "UPDATE userdata SET pass=@pass WHERE id=@id";
-		static string inc_all = "UPDATE userdata SET pass=@pass, login=@login WHERE id=@id";
+		static string inc_login = "UPDATE userdata SET Логин=@login WHERE id=@id";
+		static string inc_pass = "UPDATE userdata SET Пароль=@pass WHERE id=@id";
+		static string inc_all = "UPDATE userdata SET Пароль=@pass, Логин=@login WHERE id=@id";
 		
 		// - Обновление логина пользователя - \\
 		public static void login_update()

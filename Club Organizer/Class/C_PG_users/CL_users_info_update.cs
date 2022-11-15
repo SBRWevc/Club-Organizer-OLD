@@ -8,9 +8,9 @@ namespace Club_Organizer.Class.PG_users
 		public static void update_users_info()
 		{
 			string db_conn = @"Data Source=DB/users.db;Version=3;";
-			string query_data = "SELECT id, lastname," +
-				"name, secondname, gender, position," +
-				"root, login FROM userdata";
+			string query_data = "SELECT id, Фамилия," +
+				"Имя, Отчество, Пол, Должность," +
+				"Права, Логин FROM userdata";
 
 			SQLiteConnection conn = new SQLiteConnection(db_conn);
 			conn.Open();

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SQLite;
 
 namespace Club_Organizer.Class.C_PG_services
 {
@@ -16,9 +11,9 @@ namespace Club_Organizer.Class.C_PG_services
 			string conn = @"Data Source=DB/services.db;Version=3;";
 
 			// -Запросы к БД- \\
-			string query_data_userdata = "SELECT id, name, client_name," +
-				"type, date_start, date_end," +
-				"pref_court, sale, price, final_price FROM servicesdata";
+			string query_data_userdata = "SELECT id, Название, " +
+				"ФИО, Тип, Начало, Конец," +
+				"Корт, Цена, Скидка, Итого FROM servicesdata";
 
 
 			SQLiteConnection conn_data = new SQLiteConnection(conn);

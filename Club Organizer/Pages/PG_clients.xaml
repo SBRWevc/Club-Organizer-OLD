@@ -13,7 +13,6 @@
 		<Grid Margin="20 0 20 50">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="43"/>
-				<RowDefinition Height="35"/>
 				<RowDefinition/>
 			</Grid.RowDefinitions>
 			<!--Название страницы-->
@@ -26,112 +25,36 @@
 					   FontSize="20"
 					   Foreground="Coral"
 					   Height="33"/>
-			<!--Заголовки-->
-			<Grid Grid.Row="1"
-				  VerticalAlignment="Center"
-				  Height="35">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="60"/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<TextBlock Text="ID"
-						   Grid.Column="1"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Название услуги"
-						   Grid.Column="2"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Имя клиента"
-						   Grid.Column="3"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Тип занятия"
-						   Grid.Column="4"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Начальная дата"
-						   Grid.Column="5"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Конечная дата"
-						   Grid.Column="6"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Корт"
-						   Grid.Column="7"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Скидка"
-						   Grid.Column="8"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Цена"
-						   Grid.Column="9"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-				<TextBlock Text="Итоговая цена"
-						   Grid.Column="10"
-						   HorizontalAlignment="Center"
-						   VerticalAlignment="Center"
-						   FontSize="14"/>
-			</Grid>
-			<StackPanel Margin="0 0 0 0"
-						Grid.Row="2">
-				<Path Data="M240,130 L345,130" 
-					  Margin="0 5 0 3"
-					  Height="1" 
-					  Grid.Row="1" 
-					  Stroke="Black" 
-					  Stretch="Fill" 
-					  VerticalAlignment="Center" 
-					  Width="{Binding ElementName=data_users, Path=Width}"/>
-				<!--Таблица клиентов-->
-				<DataGrid x:Name="data_service"
-						  Grid.Column="0"
-						  Background="White"
-						  Style="{StaticResource MaterialDesignDataGrid}"
-						  HeadersVisibility="None"
-						  ColumnWidth="1*"
-						  VerticalAlignment="Top"
-						  TextBlock.TextAlignment="Center"
-						  CanUserAddRows="False"
-						  CanUserDeleteRows="False"
-						  CanUserReorderColumns="False"
-						  Foreground="Gray">
-					<DataGrid.Columns>
-						<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
-												ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-												EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-												IsReadOnly="False">
-							<DataGridCheckBoxColumn.Width>
-								60
-							</DataGridCheckBoxColumn.Width>
-						</DataGridCheckBoxColumn>
-					</DataGrid.Columns>
-				</DataGrid>
-			</StackPanel>
+			<!--Таблица клиентов-->
+			<DataGrid x:Name="data_client"
+					  Grid.Row="1"
+					  Background="White"
+					  Style="{StaticResource MaterialDesignDataGrid}"
+					  HeadersVisibility="Column"
+					  ColumnWidth="1*"
+					  VerticalAlignment="Top"
+					  TextBlock.TextAlignment="Center"
+					  CanUserAddRows="False"
+					  CanUserDeleteRows="False"
+					  CanUserReorderColumns="False"
+					  CanUserResizeColumns="False"
+					  CanUserSortColumns="True"
+					  Foreground="Gray">
+				<DataGrid.Columns>
+					<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+											ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+											EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+											IsReadOnly="False"
+											CanUserSort="False">
+						<DataGridCheckBoxColumn.Width>
+							60
+						</DataGridCheckBoxColumn.Width>
+					</DataGridCheckBoxColumn>
+				</DataGrid.Columns>
+			</DataGrid>
 		</Grid>
 		<!--Кнопка обновления данных-->
-		<Button x:Name="service_update"
+		<Button x:Name="client_update"
 				VerticalAlignment="Bottom"
 				HorizontalAlignment="Right"
 				Margin="20 5 20 10"
@@ -142,10 +65,12 @@
 				materialDesign:ButtonAssist.CornerRadius="8"
 				Content="{materialDesign:PackIcon Update, Size=20}"
 				ToolTip="Обновить"
+				ToolTipService.Placement="Top"
 				Cursor="Hand"
-				Padding="6"/>
+				Padding="6"
+				Click="client_update_Click"/>
 		<!--Кнопка сохранения изменений-->
-		<Button x:Name="service_check"
+		<Button x:Name="client_check"
 				VerticalAlignment="Bottom"
 				HorizontalAlignment="Right"
 				Margin="20 5 60 10"
@@ -156,10 +81,12 @@
 				materialDesign:ButtonAssist.CornerRadius="8"
 				Content="{materialDesign:PackIcon Check, Size=20}"
 				ToolTip="Сохранить"
+				ToolTipService.Placement="Top"
 				Cursor="Hand"
-				Padding="6"/>
+				Padding="6"
+				Click="client_check_Click"/>
 		<!--Кнопка удаления записи-->
-		<Button x:Name="service_delete"
+		<Button x:Name="client_delete"
 				VerticalAlignment="Bottom"
 				HorizontalAlignment="Right"
 				Margin="20 5 100 10"				
@@ -169,7 +96,24 @@
 				materialDesign:ElevationAssist.Elevation="Dp0"
 				materialDesign:ButtonAssist.CornerRadius="8"
 				Content="{materialDesign:PackIcon DeleteOutline, Size=20}"
-				ToolTip="Сохранить"
+				ToolTip="Удалить"
+				ToolTipService.Placement="Top"
+				Cursor="Hand"
+				Padding="6"
+				Click="client_delete_Click"/>
+		<!--Кнопка добавления в ЧС-->
+		<Button x:Name="client_blacklist"
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Right"
+				Margin="20 5 140 10"				
+				Background="White"
+				BorderBrush="White"
+				Style="{StaticResource MaterialDesignPaperButton}" 
+				materialDesign:ElevationAssist.Elevation="Dp0"
+				materialDesign:ButtonAssist.CornerRadius="8"
+				Content="{materialDesign:PackIcon Kind=Block, Size=20}"
+				ToolTip="Добавить в чёрный список"
+				ToolTipService.Placement="Top"
 				Cursor="Hand"
 				Padding="6"/>
 	</Grid>

@@ -36,7 +36,7 @@ namespace Club_Organizer.Pages
 		// - Запись обновленных данных в БД - \\
 		private void service_check_Click(object sender, RoutedEventArgs e)
 		{
-			CL_services_update.update_services_info();
+			CL_services_info_update.update_services_info();
 			dt_service = new DataTable();
 			data_update();
 		}

@@ -14,8 +14,8 @@ namespace Club_Organizer.Class.C_PG_users
 		public static void newuser()
 		{
 			string db_conn = @"Data Source=DB/users.db;Version=3;";
-			string query_newuser = "INSERT INTO userdata (id, login, pass, name, " +
-				"lastname, secondname, position, gender, root) " +
+			string query_newuser = "INSERT INTO userdata (id, Логин, Пароль, Имя, " +
+				"Фамилия, Отчество, Должность, Пол, Права) " +
 				"VALUES (@id, @login, @pass, @name, @lastname, @secondname, @position, " +
 				"@gender, @root)";
 

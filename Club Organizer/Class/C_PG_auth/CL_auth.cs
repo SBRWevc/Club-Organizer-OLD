@@ -11,7 +11,7 @@ namespace Club_Organizer.Class
 	{
 		// - Обращения и команды к БД - \\
 		static string conn_users = @"Data Source=DB/users.db;Version=3;";
-		static string query_users = "SELECT * FROM userdata WHERE login=@login AND pass=@pass";
+		static string query_users = "SELECT * FROM userdata WHERE Логин=@login AND Пароль=@pass";
 		
 		// - Переменные - \\
 		static string login = null;

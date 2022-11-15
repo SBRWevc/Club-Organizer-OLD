@@ -6,8 +6,10 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Web;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Net;
 
 namespace Club_Organizer
 {
@@ -15,8 +17,6 @@ namespace Club_Organizer
 	{
 		public static string prof_login = null;
 		public static string prof_pass = null;
-
-		string curver = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
 		public MainWindow()
 		{
@@ -48,12 +48,17 @@ namespace Club_Organizer
 		// - Отображение интерфейса при успешной авторизации - \\
 		public static void suc_auth()
 		{
+			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+
+			if (main.profile_host.IsBottomDrawerOpen != false)
+			{
+				main.profile_host.IsBottomDrawerOpen = false;
+			}
+
 			CL_userdata.clerdatauser();
 
 			CL_userdata.getdatauser();
 
-			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-			
 			// - Основные вкладки - \\
 			main.main_page.Visibility = Visibility.Visible;
 			main.contracts_page.Visibility = Visibility.Visible;
@@ -86,8 +91,16 @@ namespace Club_Organizer
 			}
 			else if (CL_userdata.gender == "муж")
 			{
-				main.avatar.Source = new BitmapImage(new Uri
-					("/res/avatar/man.png", UriKind.Relative));
+				if (main.fullname.Text == "Ляхов Дмитрий Сергеевич")
+				{
+					main.avatar.Source = new BitmapImage(new Uri
+					("/res/avatar/dev.png", UriKind.Relative));
+				}
+				else
+				{
+					main.avatar.Source = new BitmapImage(new Uri
+						("/res/avatar/man.png", UriKind.Relative));
+				}
 			}
 			else
 			{
@@ -101,6 +114,11 @@ namespace Club_Organizer
 		// - Кнопка вызова главной вкладки - \\
 		private void main_page_Click(object sender, RoutedEventArgs e)
 		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
 			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 			
 			// - Основные вкладки - \\
@@ -125,6 +143,11 @@ namespace Club_Organizer
 		// - Кнопка вызова вкладки договоров - \\
 		private void contracts_page_Click(object sender, RoutedEventArgs e)
 		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
 			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
 			// - Основные вкладки - \\
@@ -149,6 +172,11 @@ namespace Club_Organizer
 		// - Кнопка вызова вкладки клиентов - \\
 		private void clients_page_Click(object sender, RoutedEventArgs e)
 		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
 			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
 			// - Основные вкладки - \\
@@ -168,12 +196,20 @@ namespace Club_Organizer
 		// - Кнопка вызова вкладки отчётов - \\
 		private void reports_page_Click(object sender, RoutedEventArgs e)
 		{
-
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
 		}
 
 		// - Кнопка вызова настроек - \\
 		private void settings_page_Click(object sender, RoutedEventArgs e)
 		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
 			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
 			// - Основные вкладки - \\
@@ -219,8 +255,16 @@ namespace Club_Organizer
 			}
 			else if (CL_userdata.gender == "муж")
 			{
-				avatar.Source = new BitmapImage(new Uri
-					("/res/avatar/man.png", UriKind.Relative));
+				if (fullname.Text == "Ляхов Дмитрий Сергеевич")
+				{
+					avatar.Source = new BitmapImage(new Uri
+					("/res/avatar/dev.png", UriKind.Relative));
+				}
+				else
+				{
+					avatar.Source = new BitmapImage(new Uri
+						("/res/avatar/man.png", UriKind.Relative));
+				}
 			}
 			else
 			{
@@ -235,7 +279,12 @@ namespace Club_Organizer
 		private void exit_Click(object sender, RoutedEventArgs e)
 		{
 			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-			
+
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
 			// - Основные вкладки - \\
 			main.main_page.Visibility = Visibility.Collapsed;
 			main.contracts_page.Visibility = Visibility.Collapsed;
@@ -261,6 +310,11 @@ namespace Club_Organizer
 		// - Вкладка пользователей - \\
 		private void users_page_Click(object sender, RoutedEventArgs e)
 		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
 			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 			main.frame_main.Navigate(new PG_users());
 		}
@@ -268,6 +322,11 @@ namespace Club_Organizer
 		// - Вкладка услуг - \\
 		private void services_page_Click(object sender, RoutedEventArgs e)
 		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
 			MainWindow main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 			main.frame_main.Navigate(new PG_services());
 		}
@@ -275,7 +334,10 @@ namespace Club_Organizer
 		// - Вкладка чёрного списка - \\
 		private void blacklist_page_Click(object sender, RoutedEventArgs e)
 		{
-
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
 		}
 
 
@@ -313,5 +375,5 @@ namespace Club_Organizer
 				profile_host.IsBottomDrawerOpen = false;
 			}
 		}
-		}
+	}
 }

@@ -37,6 +37,10 @@ namespace Club_Organizer.Pages
 			datatext();
 			InputLanguageManager.SetInputLanguage(login, CultureInfo.CreateSpecificCulture("en"));
 			InputLanguageManager.SetInputLanguage(pass, CultureInfo.CreateSpecificCulture("en"));
+			InputLanguageManager.SetInputLanguage(lastname, CultureInfo.CreateSpecificCulture("ru"));
+			InputLanguageManager.SetInputLanguage(name, CultureInfo.CreateSpecificCulture("ru"));
+			InputLanguageManager.SetInputLanguage(secondname, CultureInfo.CreateSpecificCulture("ru"));
+			InputLanguageManager.SetInputLanguage(position, CultureInfo.CreateSpecificCulture("ru"));
 		}
 
 		// -Процесс обновления строк- \\
@@ -61,14 +65,14 @@ namespace Club_Organizer.Pages
 		}
 
 		// -Кнопка обновления данных в таблице- \\
-		private void settings_update_Click(object sender, RoutedEventArgs e)
+		private void users_update_Click(object sender, RoutedEventArgs e)
 		{
 			dt_users = new DataTable();
 			data_update();
 		}
 
 		// -Кнопка записи данных из таблицы в БД- \\ 
-		private void settings_check_Click(object sender, RoutedEventArgs e)
+		private void users_check_Click(object sender, RoutedEventArgs e)
 		{
 			CL_users_info_update.update_users_info();
 			dt_users = new DataTable();
@@ -189,7 +193,7 @@ namespace Club_Organizer.Pages
 		}
 
 		// -Кнопка удаления сотрудника- \\
-		private void settings_delete_Click(object sender, RoutedEventArgs e)
+		private void users_delete_Click(object sender, RoutedEventArgs e)
 		{
 			if (data_users.SelectedItem == null)
 			{

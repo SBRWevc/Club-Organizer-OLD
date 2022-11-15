@@ -6,8 +6,8 @@ namespace Club_Organizer.Class
 	{
 		// - Обращения и команды к БД - \\
 		static string conn_users = @"Data Source=DB/users.db;Version=3;";
-		static string query_datauser = "SELECT id, lastname, " +
-			"name, secondname, gender, position, root, login " +
+		static string query_datauser = "SELECT id, Фамилия, " +
+			"Имя, Отчество, Пол, Должность, Права, Логин " +
 			"FROM userdata WHERE @id=id";
 
 		// - Переменные - \\
@@ -33,13 +33,13 @@ namespace Club_Organizer.Class
 			while (dr.Read())
 			{
 				id = dr.GetInt32(dr.GetOrdinal("id"));
-				lastname = dr.GetString(dr.GetOrdinal("lastname"));
-				name = dr.GetString(dr.GetOrdinal("name"));
-				secondname = dr.GetString(dr.GetOrdinal("secondname"));
-				gender = dr.GetString(dr.GetOrdinal("gender"));
-				position = dr.GetString(dr.GetOrdinal("position"));
-				root = dr.GetInt32(dr.GetOrdinal("root"));
-				login = dr.GetString(dr.GetOrdinal("login"));
+				lastname = dr.GetString(dr.GetOrdinal("Фамилия"));
+				name = dr.GetString(dr.GetOrdinal("Имя"));
+				secondname = dr.GetString(dr.GetOrdinal("Отчество"));
+				gender = dr.GetString(dr.GetOrdinal("Пол"));
+				position = dr.GetString(dr.GetOrdinal("Должность"));
+				root = dr.GetInt32(dr.GetOrdinal("Права"));
+				login = dr.GetString(dr.GetOrdinal("Логин"));
 			}
 
 			conn.Close();

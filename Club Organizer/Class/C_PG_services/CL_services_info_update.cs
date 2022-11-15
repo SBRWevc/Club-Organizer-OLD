@@ -4,10 +4,11 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 
 namespace Club_Organizer.Class.C_PG_services
 {
-	internal class CL_services_update
+	internal class CL_services_info_update
 	{
 		// - Обновление данных пользователей - \\
 		public static void update_services_info()
@@ -16,9 +17,9 @@ namespace Club_Organizer.Class.C_PG_services
 			string conn = @"Data Source=DB/services.db;Version=3;";
 
 			// -Запросы к БД- \\
-			string query_data= "SELECT id, name, client_name," +
-				"type, date_start, date_end," +
-				"pref_court, sale, price, final_price FROM servicesdata";
+			string query_data= "SELECT id, Название, " +
+				"ФИО, Тип, Начало, Конец," +
+				"Корт, Цена, Скидка, Итого FROM servicesdata";
 
 			SQLiteConnection db_conn = new SQLiteConnection(conn);
 			db_conn.Open();

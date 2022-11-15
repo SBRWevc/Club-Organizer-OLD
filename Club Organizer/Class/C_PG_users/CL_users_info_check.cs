@@ -12,7 +12,7 @@ namespace Club_Organizer.Class.C_PG_users
 		public static void checkinfo()
 		{
 			string db_conn = @"Data Source=DB/users.db;Version=3;";
-			string query_test = "SELECT login FROM userdata WHERE login=@login";
+			string query_test = "SELECT Логин FROM userdata WHERE Логин=@login";
 			string login = Pages.PG_users.login_text;
 
 			SQLiteConnection conn = new SQLiteConnection(db_conn);
