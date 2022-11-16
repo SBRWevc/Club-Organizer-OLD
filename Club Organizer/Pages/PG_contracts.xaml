@@ -20,7 +20,7 @@
 								   materialDesign:DialogMargin="50">
 			<materialDesign:DialogHost.DialogContent>
 				<Grid MinWidth="1440"
-					  MinHeight="768">
+					  MinHeight="610">
 					<Frame x:Name="frame_new_contract"/>
 				</Grid>
 			</materialDesign:DialogHost.DialogContent>

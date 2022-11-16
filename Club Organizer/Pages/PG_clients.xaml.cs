@@ -51,7 +51,7 @@ namespace Club_Organizer.Pages
 				SQLiteConnection conn_data_del = new SQLiteConnection(conn);
 				conn_data_del.Open();
 				using (SQLiteCommand mCmd = new SQLiteCommand("DELETE FROM " +
-					"clients WHERE ID=" + rowView["ID"], conn_data_del))
+					"clients_data WHERE ID=" + rowView["ID"], conn_data_del))
 				{
 					mCmd.ExecuteNonQuery();
 				}

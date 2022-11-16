@@ -14,7 +14,7 @@ namespace Club_Organizer.Class.C_PG_clients
 			string query_client_update = "SELECT id, Фамилия," +
 				"Имя, Отчество, Паспорт, Отдел," +
 				"Телефон, Email, ДР," +
-				"Зарегестрирован, Администратор FROM clients";
+				"Зарегестрирован, Администратор FROM clients_data";
 
 			SQLiteConnection db_conn = new SQLiteConnection(conn);
 			db_conn.Open();

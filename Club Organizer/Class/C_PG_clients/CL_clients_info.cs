@@ -14,7 +14,7 @@ namespace Club_Organizer.Class.C_PG_clients
 			string query_data_clientsdata = "SELECT id, Фамилия," +
 				"Имя, Отчество, Паспорт, Отдел," +
 				"Телефон, Email, ДР," +
-				"Зарегестрирован, Администратор FROM clients";
+				"Зарегестрирован, Администратор FROM clients_data";
 
 			SQLiteConnection conn_data = new SQLiteConnection(conn);
 			conn_data.Open();

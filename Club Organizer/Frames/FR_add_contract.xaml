@@ -6,19 +6,18 @@
 	  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
 	  FontFamily="Century Gothic"
-      d:DesignHeight="768" 
-	  d:DesignWidth="1440"
+      d:DesignHeight="610" 
+	  d:DesignWidth="1600"
 	  Background="White">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 			<ColumnDefinition Width="3"/>
-			<ColumnDefinition/>
+			<ColumnDefinition Width="1.2*"/>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="55"/>
 			<RowDefinition/>
-			<RowDefinition Height="40"/>
 		</Grid.RowDefinitions>
 		<TextBlock Text="Создание нового договора"
 				   HorizontalAlignment="Center"
@@ -29,18 +28,20 @@
 				   Foreground="Coral"
 				   FontSize="29"
 				   Margin="0 10 0 0"/>
+		<!--Данные клиента-->
 		<Grid Grid.Column="0"
+			  VerticalAlignment="Top"
 			  Grid.Row="1"
-			  Margin="20 0"
-			  VerticalAlignment="Top">
+			  Margin="20 10 20 0"
+			  Height="535">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="32"/>
-				<RowDefinition Height="55"/>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="20"/>
 				<RowDefinition Height="100"/>
 				<RowDefinition Height="100"/>
 				<RowDefinition Height="173"/>
-				<RowDefinition Height="32"/>
-				<RowDefinition Height="100"/>
+				<RowDefinition/>
 			</Grid.RowDefinitions>
 			<TextBlock Text="Данные клиента"
 					   HorizontalAlignment="Center"
@@ -48,15 +49,75 @@
 					   Margin="0 0 0 10"/>
 			<ComboBox x:Name="search_client"
 					  VerticalAlignment="Center"
+					  HorizontalAlignment="Left"
 					  Grid.Row="1"
 					  Style="{StaticResource MaterialDesignOutlinedComboBox}"
 					  materialDesign:HintAssist.Hint="Поиск существующего клиента"
 					  Background="White"
 					  ItemsSource="{Binding}"
 					  IsEditable="True"
-					  MouseLeftButtonDown="search_client_MouseLeftButtonDown"/>
+					  MouseLeftButtonDown="search_client_MouseLeftButtonDown"
+					  Width="477"/>
+			<Button x:Name="client_check"
+					Grid.Row="1"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Left"
+					Background="White"
+					BorderThickness="0"
+					Style="{StaticResource MaterialDesignPaperButton}"
+					materialDesign:ElevationAssist.Elevation="Dp0"
+					materialDesign:ButtonAssist.CornerRadius="10"
+					Content="{materialDesign:PackIcon Kind=Check, Size=25}"
+					ToolTip="Заполнить данные о клиенте"
+					ToolTipService.Placement="Bottom"
+					Padding="0"
+					Width="48"
+					Height="48"
+					Margin="502 0 0 0"
+					Click="client_check_Click"/>
+			<Button x:Name="client_clear"
+					Grid.Row="1"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Left"
+					Background="White"
+					BorderThickness="0"
+					Style="{StaticResource MaterialDesignPaperButton}"
+					materialDesign:ElevationAssist.Elevation="Dp0"
+					materialDesign:ButtonAssist.CornerRadius="10"
+					Content="{materialDesign:PackIcon Kind=Cancel, Size=25}"
+					ToolTip="Очистить данные о клиенте"
+					ToolTipService.Placement="Bottom"
+					Padding="0"
+					Width="48"
+					Height="48"
+					Margin="570 0 0 0"
+					Click="client_clear_Click"/>
+			<Button x:Name="write_new_client"
+					Grid.Row="1"
+					VerticalAlignment="Center"
+					HorizontalAlignment="Right"
+					Background="White"
+					BorderThickness="0"
+					Style="{StaticResource MaterialDesignPaperButton}"
+					materialDesign:ElevationAssist.Elevation="Dp0"
+					materialDesign:ButtonAssist.CornerRadius="10"
+					Content="{materialDesign:PackIcon Kind=ContentSaveAddOutline, Size=25}"
+					ToolTip="Записать данные нового клиента"
+					ToolTipService.Placement="Bottom"
+					Padding="0"
+					Width="48"
+					Height="48"
+					Click="write_new_client_Click"/>
+			<Path Data="M240,130 L345,130" 
+				  Margin="0 3 0 0"
+				  Height="2" 
+				  Grid.Row="2" 
+				  Stroke="Black" 
+				  Stretch="Fill" 
+				  VerticalAlignment="center" 
+				  Width="678"/>
 			<Border CornerRadius="4"
-					Grid.Row="2"
+					Grid.Row="3"
 					BorderBrush="Coral"
 					BorderThickness="1"
 					Margin="0 13 0 13">
@@ -87,7 +148,7 @@
 				</StackPanel>
 			</Border>
 			<TextBlock Text="ФИО"
-					   Grid.Row="2"
+					   Grid.Row="3"
 					   Background="White"
 					   HorizontalAlignment="Left"
 					   VerticalAlignment="Top"
@@ -95,7 +156,7 @@
 					   Margin="10 5 10 0"
 					   Padding="5 0"/>
 			<Border CornerRadius="4"
-					Grid.Row="3"
+					Grid.Row="4"
 					BorderBrush="Coral"
 					BorderThickness="1"
 					Margin="0 13 0 13">
@@ -128,7 +189,7 @@
 				</StackPanel>
 			</Border>
 			<TextBlock Text="Паспортные данные"
-					   Grid.Row="3"
+					   Grid.Row="4"
 					   Background="White"
 					   HorizontalAlignment="Left"
 					   VerticalAlignment="Top"
@@ -136,7 +197,7 @@
 					   Margin="10 5 10 0"
 					   Padding="5 0"/>
 			<Border CornerRadius="4"
-					Grid.Row="4"
+					Grid.Row="5"
 					BorderBrush="Coral"
 					BorderThickness="1"
 					Margin="0 13 0 13">
@@ -191,7 +252,7 @@
 								 materialDesign:HintAssist.Hint="Номер телефона"
 								 Width="200"
 								 Margin="0 10 25 10"/>
-						<TextBox x:Name="emain"
+						<TextBox x:Name="email"
 								 Background="White"
 								 materialDesign:HintAssist.Background="White"
 								 Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -211,53 +272,225 @@
 				</StackPanel>
 			</Border>
 			<TextBlock Text="Контактные данные"
-					   Grid.Row="4"
-					   Background="White"
-					   HorizontalAlignment="Left"
-					   VerticalAlignment="Top"
-					   FontStyle="Italic"
-					   Margin="10 5 10 0"
-					   Padding="5 0"/>
-			<TextBlock Text="Администратор"
 					   Grid.Row="5"
-					   HorizontalAlignment="Center"
-					   FontSize="20"
-					   Margin="0 0 0 10"/>
-			<Border CornerRadius="4"
-					Grid.Row="6"
-					BorderBrush="Coral"
-					BorderThickness="1"
-					Margin="0 13 0 13">
-				<StackPanel Orientation="Horizontal"
-							HorizontalAlignment="Center"
-							VerticalAlignment="Center"
-							Width="650">
-					<TextBox x:Name="administrator"
-							 Background="White"
-							 materialDesign:HintAssist.Background="White"
-							 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-							 materialDesign:HintAssist.Hint="Администратор"
-							 Width="312.5"
-							 Margin="0 10 25 10"/>
-					<DatePicker x:Name="reg_date"
-								Background="White"
-								materialDesign:HintAssist.Background="White"
-								Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-								materialDesign:HintAssist.Hint="Дата оформления"
-								materialDesign:CalendarAssist.IsHeaderVisible="False"
-								materialDesign:CalendarAssist.Orientation="Horizontal"
-								Width="312.5"
-								Margin="0 10 0 10"/>
-				</StackPanel>
-			</Border>
-			<TextBlock Text="Данные об офрмлении"
-					   Grid.Row="6"
 					   Background="White"
 					   HorizontalAlignment="Left"
 					   VerticalAlignment="Top"
 					   FontStyle="Italic"
 					   Margin="10 5 10 0"
 					   Padding="5 0"/>
+			<StackPanel Orientation="Horizontal"
+						Grid.Row="6"
+						HorizontalAlignment="Center">
+				<Button x:Name="contarct_save"
+						Background="White"
+						BorderBrush="Black"
+						BorderThickness="0 0 0 1"
+						Style="{StaticResource MaterialDesignPaperButton}"
+						materialDesign:ElevationAssist.Elevation="Dp0"
+						materialDesign:ButtonAssist.CornerRadius="0"
+						Padding="2 0"
+						Margin="0 0 20 5">
+					<Button.Content>
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="ContentSaveAddOutline"
+													 Height="20"
+													 Width="20"
+													 Margin="0 0 5 0"/>
+							<TextBlock Text="Сохранить"
+									   Padding="0 2 0 0"/>
+						</StackPanel>
+					</Button.Content>
+				</Button>
+				<Button x:Name="contarct_print"
+						Background="White"
+						BorderBrush="Black"
+						BorderThickness="0 0 0 1"
+						Style="{StaticResource MaterialDesignPaperButton}"
+						materialDesign:ElevationAssist.Elevation="Dp0"
+						materialDesign:ButtonAssist.CornerRadius="0"
+						Padding="2 0"
+						Margin="0 0 20 5">
+					<Button.Content>
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="PrinterOutline"
+													 Height="20"
+													 Width="20"
+													 Margin="0 0 5 0"/>
+							<TextBlock Text="Распечатать"
+									   Padding="0 2 0 0"/>
+						</StackPanel>
+					</Button.Content>
+				</Button>
+				<Button x:Name="contarct_open"
+						Background="White"
+						BorderBrush="Black"
+						BorderThickness="0 0 0 1"
+						Style="{StaticResource MaterialDesignPaperButton}"
+						materialDesign:ElevationAssist.Elevation="Dp0"
+						materialDesign:ButtonAssist.CornerRadius="0"
+						Padding="2 0"
+						Margin="0 0 0 5">
+					<Button.Content>
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="FileDocumentOutline"
+													 Height="20"
+													 Width="20"
+													 Margin="0 0 5 0"/>
+							<TextBlock Text="Открыть в Word"
+									   Padding="0 2 0 0"/>
+						</StackPanel>
+					</Button.Content>
+				</Button>
+			</StackPanel>
 		</Grid>
+		<Path Grid.Column="1" 
+			  Data="M720,60 L720,150"
+			  Fill="#FFF4F4F5" 
+			  HorizontalAlignment="Center" 
+			  Height="535" 
+			  Grid.Row="1" 
+			  Stroke="Black" 
+			  Stretch="Fill" 
+			  VerticalAlignment="Center" 
+			  Width="1"/>
+		<!--Данные услуги-->
+		<materialDesign:DialogHost x:Name="add_user_dialog"
+								   Margin="20 10 20 0"
+								   Grid.Row="1"
+								   Grid.Column="2"
+								   Placement="Center"
+								   HorizontalContentAlignment="Center"
+								   VerticalContentAlignment="Center"
+								   DialogTheme="Light" 
+								   CloseOnClickAway="True"
+								   materialDesign:DialogMargin="50"
+								   OverlayBackground="White">
+			<materialDesign:DialogHost.DialogContent>
+				<Grid Height="520"
+					  Width="850"
+					  Background="White">
+					<Frame x:Name="frame_service_info"/>
+				</Grid>
+			</materialDesign:DialogHost.DialogContent>
+			<Grid VerticalAlignment="Top"
+				  Height="535">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="32"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<TextBlock Text="Данные услуги"
+						   HorizontalAlignment="Center"
+						   FontSize="20"
+						   Margin="0 0 0 10"/>
+				<TabControl Grid.Row="1">
+					<TabItem Header="Теннис">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="20"/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Path Data="M240,130 L345,130" 
+								  Margin="0 7 0 0"
+								  Height="2" 
+								  Grid.Row="0" 
+								  Stroke="Black" 
+								  Stretch="Fill" 
+								  VerticalAlignment="Center" 
+								  Width="831"/>
+							<StackPanel Grid.Row="1">
+								<!--Таблица сотрудников-->
+								<DataGrid x:Name="data_users"
+										  Background="White"
+										  Style="{StaticResource MaterialDesignDataGrid}"
+										  HeadersVisibility="Column"
+										  ColumnWidth="1*"
+										  VerticalAlignment="Top"
+										  TextBlock.TextAlignment="Center"
+										  CanUserAddRows="False"
+										  CanUserDeleteRows="False"
+										  CanUserReorderColumns="False"
+										  CanUserResizeColumns="False"
+										  CanUserSortColumns="True"
+										  Foreground="Gray">
+									<DataGrid.Columns>
+										<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+																ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+																EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+																Width="60"
+																CanUserSort="False">
+										</DataGridCheckBoxColumn>
+									</DataGrid.Columns>
+								</DataGrid>
+								<!--Кнопка добавления сотрудника-->
+								<Button x:Name="add_user"
+										Background="White"
+										BorderBrush="White"
+										Style="{StaticResource MaterialDesignPaperButton}"
+										Content="{materialDesign:PackIcon Plus, Size=30}"
+										Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+										materialDesign:ElevationAssist.Elevation="Dp0"
+										materialDesign:ButtonAssist.CornerRadius="22"
+										ToolTip="Добавить нового пользователя"
+										ToolTipService.Placement="Bottom"
+										Margin="5"
+										Padding="5"
+										Height="45"
+										Width="45"
+										Cursor="Hand"/>
+							</StackPanel>
+						</Grid>
+					</TabItem>
+					<TabItem Header="Бокс">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="20"/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Path Data="M240,130 L345,130" 
+								  Margin="0 7 0 0"
+								  Height="2" 
+								  Grid.Row="0" 
+								  Stroke="Black" 
+								  Stretch="Fill" 
+								  VerticalAlignment="Center" 
+								  Width="831"/>
+						</Grid>
+					</TabItem>
+					<TabItem Header="Гимнастика">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="20"/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Path Data="M240,130 L345,130" 
+								  Margin="0 7 0 0"
+								  Height="2" 
+								  Grid.Row="0" 
+								  Stroke="Black" 
+								  Stretch="Fill" 
+								  VerticalAlignment="Center" 
+								  Width="831"/>
+						</Grid>
+					</TabItem>
+					<TabItem Header="Каратэ">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="20"/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Path Data="M240,130 L345,130" 
+								  Margin="0 7 0 0"
+								  Height="2" 
+								  Grid.Row="0" 
+								  Stroke="Black" 
+								  Stretch="Fill" 
+								  VerticalAlignment="Center" 
+								  Width="831"/>
+						</Grid>
+					</TabItem>
+				</TabControl>
+			</Grid>
+		</materialDesign:DialogHost>
 	</Grid>
 </Page>
