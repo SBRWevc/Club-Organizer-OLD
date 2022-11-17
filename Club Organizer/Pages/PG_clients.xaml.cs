@@ -8,7 +8,6 @@ namespace Club_Organizer.Pages
 {
 	public partial class PG_clients : Page
 	{
-		// - Переменные - \\
 		string conn = @"Data Source=DB/clients.db;Version=3;";
 		public static DataTable dt_client = new DataTable();
 
@@ -18,7 +17,6 @@ namespace Club_Organizer.Pages
 			data_update();
 		}
 
-		// - Получение и вывод данных из БД - \\
 		private void data_update()
 		{
 			dt_client = new DataTable();

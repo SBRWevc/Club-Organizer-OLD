@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Club_Organizer.Pages
 {
-	/// <summary>
-	/// Логика взаимодействия для PG_main.xaml
-	/// </summary>
 	public partial class PG_main : Page
 	{
 		public PG_main()

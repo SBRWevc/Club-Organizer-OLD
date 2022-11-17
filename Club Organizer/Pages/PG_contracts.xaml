@@ -10,19 +10,23 @@
 	  d:DesignWidth="1600"
 	  Background="White">
 	<Grid>
-		<!--Кнопка добавления договора-->
 		<materialDesign:DialogHost x:Name="add_contract_dialog"
 								   Placement="Center"
 								   HorizontalContentAlignment="Center"
 								   VerticalContentAlignment="Center"
 								   DialogTheme="Light" 
 								   CloseOnClickAway="True"
+								   DialogBackground="Transparent"
 								   materialDesign:DialogMargin="50">
 			<materialDesign:DialogHost.DialogContent>
-				<Grid MinWidth="1440"
-					  MinHeight="610">
-					<Frame x:Name="frame_new_contract"/>
-				</Grid>
+				<Border CornerRadius="20"
+						Background="White">
+					<Grid MinWidth="1440"
+						  MinHeight="610"
+						  Background="Transparent">
+						<Frame x:Name="frame_new_contract"/>
+					</Grid>
+				</Border>
 			</materialDesign:DialogHost.DialogContent>
 			<Grid Margin="20 0">
 				<Grid.RowDefinitions>
@@ -30,7 +34,6 @@
 					<RowDefinition/>
 					<RowDefinition Height="50"/>
 				</Grid.RowDefinitions>
-				<!--Название страницы-->
 				<TextBlock Text="Договоры"
 						   Grid.Row="0"
 						   HorizontalAlignment="Center"
@@ -41,7 +44,6 @@
 						   Foreground="Coral"
 						   Height="33"/>
 				<StackPanel Grid.Row="1">
-					<!--Таблица сотрудников-->
 					<DataGrid x:Name="data_contract"
 							  Background="White"
 							  Style="{StaticResource MaterialDesignDataGrid}"
@@ -64,7 +66,6 @@
 							</DataGridCheckBoxColumn>
 						</DataGrid.Columns>
 					</DataGrid>
-					<!--Кнопка добавления сотрудника-->
 					<Button x:Name="add_contract"
 							Background="White"
 							BorderBrush="White"
@@ -81,7 +82,6 @@
 							Width="45"
 							Cursor="Hand"/>
 				</StackPanel>
-				<!--Кнопка обновления данных-->
 				<Button x:Name="contracts_update"
 						Grid.Row="3"
 						VerticalAlignment="Bottom"
@@ -97,7 +97,6 @@
 						ToolTipService.Placement="Top"
 						Cursor="Hand"
 						Padding="6"/>
-				<!--Кнопка сохранения изменений-->
 				<Button x:Name="contracts_check"
 						Grid.Row="3"
 						VerticalAlignment="Bottom"
@@ -113,7 +112,6 @@
 						ToolTipService.Placement="Top"
 						Cursor="Hand"
 						Padding="6"/>
-				<!--Кнопка удаления записи-->
 				<Button x:Name="contracts_delete"
 						Grid.Row="3"
 						VerticalAlignment="Bottom"
@@ -129,7 +127,6 @@
 						ToolTipService.Placement="Top"
 						Cursor="Hand"
 						Padding="6"/>
-				<!--Кнопка печати записи-->
 				<Button x:Name="contracts_print"
 						Grid.Row="3"
 						VerticalAlignment="Bottom"

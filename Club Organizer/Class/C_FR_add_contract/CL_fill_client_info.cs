@@ -1,10 +1,5 @@
 ﻿using Club_Organizer.Frames;
-using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Club_Organizer.Class.C_FR_add_contract
 {

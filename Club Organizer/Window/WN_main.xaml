@@ -5,20 +5,15 @@
 				 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 				 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
 				 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-				 mc:Ignorable="d"
-				 
-				 FontFamily="Century Gothic"
-				 
+				 mc:Ignorable="d"				 
+				 FontFamily="Century Gothic"				 
 				 BorderThickness="0"
                  GlowBrush="Black"
-                 ResizeMode="CanResizeWithGrip"
-				 
+                 ResizeMode="CanResizeWithGrip"				 
 				 MinHeight="900" 
-				 MinWidth="1600"
-				 
+				 MinWidth="1600"				 
 				 WindowState="Maximized"
 				 WindowStartupLocation="CenterScreen">
-	<!-- Настройки иконки -->
 	<mah:MetroWindow.IconTemplate>
 		<DataTemplate>
 			<StackPanel Orientation="Horizontal"
@@ -31,18 +26,16 @@
 										 Width="20"
 										 Foreground="Coral"/>
 				<TextBlock Text="Club Organizer"
+						   Margin="0 0 0 1"
 						   VerticalAlignment="Center"
 						   FontFamily="Century Gothic"
 						   FontSize="14"
-						   Foreground="White"
-						   Margin="0 0 0 1"/>
+						   Foreground="White"/>
 			</StackPanel>
 		</DataTemplate>
 	</mah:MetroWindow.IconTemplate>
-	<!-- Левые кнопки-->
 	<mah:MetroWindow.LeftWindowCommands>
 		<mah:WindowCommands>
-			<!--Основные-->
 			<Button x:Name="main_page"
 					Content="Главная"
 					Click="main_page_Click">
@@ -111,7 +104,6 @@
 					</DataTemplate>
 				</Button.ContentTemplate>
 			</Button>
-			<!--Настройки-->
 			<Button x:Name="users_page"
 					Content="Пользователи"
 					Click="users_page_Click">
@@ -146,7 +138,6 @@
 					</DataTemplate>
 				</Button.ContentTemplate>
 			</Button>
-			<!--Клиенты-->
 			<Button x:Name="blacklist_page"
 					Content="Чёрный список"
 					Click="blacklist_page_Click">
@@ -166,7 +157,6 @@
 			</Button>
 		</mah:WindowCommands>
 	</mah:MetroWindow.LeftWindowCommands>
-	<!-- Правые кнопки -->
 	<mah:MetroWindow.RightWindowCommands>
 		<mah:WindowCommands>
 			<Button x:Name="settings_page"
@@ -212,7 +202,6 @@
 		<Frame x:Name="frame_main"
 			   NavigationUIVisibility="Hidden" 
 			   IsTabStop="False"/>
-		<!--Профиль-->
 		<materialDesign:DrawerHost x:Name="profile_host"
 								   Grid.Row="0"
 								   Grid.RowSpan="2"
@@ -231,24 +220,20 @@
 					</Style.Triggers>
 				</Style>
 			</materialDesign:DrawerHost.Style>
-			<!--Контент профиля-->
 			<materialDesign:DrawerHost.BottomDrawerContent>
 				<StackPanel Margin="16"
 							HorizontalAlignment="Center">
-					<!--Аватар-->
 					<Image x:Name="avatar"
 						   Source="/res/avatar/man.png"
 						   RenderOptions.BitmapScalingMode="HighQuality"
 						   Width="150"
 						   Height="150"
 						   Margin="10"/>
-					<!--Имя пользователя полное-->
 					<TextBlock x:Name="fullname"
 							   HorizontalAlignment="Center"
 							   Text="Имя пользователя - полное"
 							   FontWeight="Bold"
 							   FontSize="20"/>
-					<!--Должность-->
 					<TextBlock x:Name="profile_position"
 							   HorizontalAlignment="Center"
 							   Text="Должность"
@@ -257,7 +242,6 @@
 					<Grid Margin="0 20 0 10"
 						  HorizontalAlignment="Center"
 						  Width="500">
-						<!--Логин пользователя-->
 						<TextBox x:Name="profile_login"
 								 HorizontalAlignment="Left"
 								 Background="White"
@@ -266,7 +250,6 @@
 								 materialDesign:HintAssist.Hint="Введите новый логин"
 								 MaxLength="15"
 								 Width="240"/>
-						<!--Пароль пользователя-->
 						<PasswordBox x:Name="profile_pass"
 									 HorizontalAlignment="Right"
 									 Background="White"
@@ -276,7 +259,6 @@
 									 MaxLength="15"
 									 Width="240"/>
 					</Grid>
-					<!--Кнопка сохранения изменений-->
 					<Button x:Name="profile_save_button"
 							HorizontalAlignment="Center"
 							Margin="0 20 0 0"

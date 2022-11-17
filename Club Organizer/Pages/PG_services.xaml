@@ -15,7 +15,6 @@
 				<RowDefinition Height="43"/>
 				<RowDefinition/>
 			</Grid.RowDefinitions>
-			<!--Название страницы-->
 			<TextBlock Text="Услуги"
 					   Grid.Row="0"
 					   HorizontalAlignment="Center"
@@ -26,7 +25,6 @@
 					   Foreground="Coral"
 					   Height="33"/>
 			<StackPanel Grid.Row="1">
-				<!--Таблица услуг-->
 				<DataGrid x:Name="data_service"
 						  Background="White"
 						  Style="{StaticResource MaterialDesignDataGrid}"
@@ -54,7 +52,6 @@
 				</DataGrid>
 			</StackPanel>
 		</Grid>
-		<!--Кнопка обновления данных-->
 		<Button x:Name="service_update"
 				VerticalAlignment="Bottom"
 				HorizontalAlignment="Right"
@@ -70,7 +67,6 @@
 				Cursor="Hand"
 				Padding="6"
 				Click="service_update_Click"/>
-		<!--Кнопка сохранения изменений-->
 		<Button x:Name="service_check"
 				VerticalAlignment="Bottom"
 				HorizontalAlignment="Right"
@@ -86,7 +82,6 @@
 				Cursor="Hand"
 				Padding="6"
 				Click="service_check_Click"/>
-		<!--Кнопка удаления записи-->
 		<Button x:Name="service_delete"
 				VerticalAlignment="Bottom"
 				HorizontalAlignment="Right"

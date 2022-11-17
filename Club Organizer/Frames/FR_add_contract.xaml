@@ -8,7 +8,15 @@
 	  FontFamily="Century Gothic"
       d:DesignHeight="610" 
 	  d:DesignWidth="1600"
-	  Background="White">
+	  d:Background="White"
+	  Background="Transparent">
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
@@ -20,15 +28,13 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 		<TextBlock Text="Создание нового договора"
-				   HorizontalAlignment="Center"
+				   HorizontalAlignment="Left"
 				   VerticalAlignment="Center"
 				   Grid.Column="0"
-				   Grid.ColumnSpan="3"
 				   FontWeight="Bold"
 				   Foreground="Coral"
 				   FontSize="29"
-				   Margin="0 10 0 0"/>
-		<!--Данные клиента-->
+				   Margin="20 10 0 0"/>
 		<Grid Grid.Column="0"
 			  VerticalAlignment="Top"
 			  Grid.Row="1"
@@ -138,7 +144,7 @@
 							 materialDesign:HintAssist.Hint="Имя"
 							 Width="200"
 							 Margin="0 10 25 10"/>
-					<TextBox x:Name="secontname"
+					<TextBox x:Name="secondname"
 							 Background="White"
 							 materialDesign:HintAssist.Background="White"
 							 Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -354,7 +360,6 @@
 			  Stretch="Fill" 
 			  VerticalAlignment="Center" 
 			  Width="1"/>
-		<!--Данные услуги-->
 		<materialDesign:DialogHost x:Name="add_user_dialog"
 								   Margin="20 10 20 0"
 								   Grid.Row="1"
@@ -374,122 +379,96 @@
 				</Grid>
 			</materialDesign:DialogHost.DialogContent>
 			<Grid VerticalAlignment="Top"
-				  Height="535">
+				  Height="535"
+				  Width="831">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="32"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-				<TextBlock Text="Данные услуги"
+				<TextBlock Text="Услуги"
 						   HorizontalAlignment="Center"
 						   FontSize="20"
 						   Margin="0 0 0 10"/>
-				<TabControl Grid.Row="1">
-					<TabItem Header="Теннис">
-						<Grid>
-							<Grid.RowDefinitions>
-								<RowDefinition Height="20"/>
-								<RowDefinition/>
-							</Grid.RowDefinitions>
-							<Path Data="M240,130 L345,130" 
-								  Margin="0 7 0 0"
-								  Height="2" 
-								  Grid.Row="0" 
-								  Stroke="Black" 
-								  Stretch="Fill" 
-								  VerticalAlignment="Center" 
-								  Width="831"/>
-							<StackPanel Grid.Row="1">
-								<!--Таблица сотрудников-->
-								<DataGrid x:Name="data_users"
-										  Background="White"
-										  Style="{StaticResource MaterialDesignDataGrid}"
-										  HeadersVisibility="Column"
-										  ColumnWidth="1*"
-										  VerticalAlignment="Top"
-										  TextBlock.TextAlignment="Center"
-										  CanUserAddRows="False"
-										  CanUserDeleteRows="False"
-										  CanUserReorderColumns="False"
-										  CanUserResizeColumns="False"
-										  CanUserSortColumns="True"
-										  Foreground="Gray">
-									<DataGrid.Columns>
-										<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
-																ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-																EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-																Width="60"
-																CanUserSort="False">
-										</DataGridCheckBoxColumn>
-									</DataGrid.Columns>
-								</DataGrid>
-								<!--Кнопка добавления сотрудника-->
-								<Button x:Name="add_user"
-										Background="White"
-										BorderBrush="White"
-										Style="{StaticResource MaterialDesignPaperButton}"
-										Content="{materialDesign:PackIcon Plus, Size=30}"
-										Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-										materialDesign:ElevationAssist.Elevation="Dp0"
-										materialDesign:ButtonAssist.CornerRadius="22"
-										ToolTip="Добавить нового пользователя"
-										ToolTipService.Placement="Bottom"
-										Margin="5"
-										Padding="5"
-										Height="45"
-										Width="45"
-										Cursor="Hand"/>
-							</StackPanel>
-						</Grid>
-					</TabItem>
-					<TabItem Header="Бокс">
-						<Grid>
-							<Grid.RowDefinitions>
-								<RowDefinition Height="20"/>
-								<RowDefinition/>
-							</Grid.RowDefinitions>
-							<Path Data="M240,130 L345,130" 
-								  Margin="0 7 0 0"
-								  Height="2" 
-								  Grid.Row="0" 
-								  Stroke="Black" 
-								  Stretch="Fill" 
-								  VerticalAlignment="Center" 
-								  Width="831"/>
-						</Grid>
-					</TabItem>
-					<TabItem Header="Гимнастика">
-						<Grid>
-							<Grid.RowDefinitions>
-								<RowDefinition Height="20"/>
-								<RowDefinition/>
-							</Grid.RowDefinitions>
-							<Path Data="M240,130 L345,130" 
-								  Margin="0 7 0 0"
-								  Height="2" 
-								  Grid.Row="0" 
-								  Stroke="Black" 
-								  Stretch="Fill" 
-								  VerticalAlignment="Center" 
-								  Width="831"/>
-						</Grid>
-					</TabItem>
-					<TabItem Header="Каратэ">
-						<Grid>
-							<Grid.RowDefinitions>
-								<RowDefinition Height="20"/>
-								<RowDefinition/>
-							</Grid.RowDefinitions>
-							<Path Data="M240,130 L345,130" 
-								  Margin="0 7 0 0"
-								  Height="2" 
-								  Grid.Row="0" 
-								  Stroke="Black" 
-								  Stretch="Fill" 
-								  VerticalAlignment="Center" 
-								  Width="831"/>
-						</Grid>
-					</TabItem>
-				</TabControl>
+				<StackPanel Grid.Row="1">
+					<DataGrid x:Name="data_users"
+							  Background="White"
+							  Style="{StaticResource MaterialDesignDataGrid}"
+							  HeadersVisibility="Column"
+							  ColumnHeaderHeight="62"
+							  ColumnWidth="1*"
+							  VerticalAlignment="Top"
+							  TextBlock.TextAlignment="Center"
+							  CanUserAddRows="False"
+							  CanUserDeleteRows="False"
+							  CanUserReorderColumns="False"
+							  CanUserResizeColumns="False"
+							  CanUserSortColumns="True"
+							  Foreground="Gray">
+						<DataGrid.Columns>
+							<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+													ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+													EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+													Width="60"
+													CanUserSort="False">
+							</DataGridCheckBoxColumn>
+						</DataGrid.Columns>
+					</DataGrid>
+					<materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
+											 materialDesign:ElevationAssist.Elevation="Dp0"
+											 HorizontalAlignment="Center"
+											 Foreground="Black"
+											 Background="White"
+											 BorderBrush="White"
+											 BorderThickness="0"
+											 PlacementMode="RightAndAlignTopEdges"
+											 ToolTip="Добавить услугу"
+											 Width="45"
+											 Height="45">
+						<materialDesign:PopupBox.ToggleCheckedContent>
+							<materialDesign:PackIcon Kind="Pencil"
+													 Width="20"
+													 Height="20" />
+						</materialDesign:PopupBox.ToggleCheckedContent>
+						<StackPanel>
+							<Button x:Name="tennis"
+									HorizontalAlignment="Left"
+									Background="White"
+									BorderThickness="0"
+									Style="{StaticResource MaterialDesignPaperButton}"
+									Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+									materialDesign:ElevationAssist.Elevation="Dp0"
+									Content="Теннис" 
+									Margin="5"/>
+							<Button x:Name="box"
+									HorizontalAlignment="Left"
+									Background="White"
+									BorderThickness="0"
+									Style="{StaticResource MaterialDesignPaperButton}"
+									Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+									materialDesign:ElevationAssist.Elevation="Dp0"
+									Content="Бокс" 
+									Margin="5"/>
+							<Button x:Name="karate"
+									HorizontalAlignment="Left"
+									Background="White"
+									BorderThickness="0"
+									Style="{StaticResource MaterialDesignPaperButton}"
+									Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+									materialDesign:ElevationAssist.Elevation="Dp0"
+									Content="Карате" 
+									Margin="5"/>
+							<Button x:Name="gymnastic"
+									HorizontalAlignment="Left"
+									Background="White"
+									BorderThickness="0"
+									Style="{StaticResource MaterialDesignPaperButton}"
+									Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+									materialDesign:ElevationAssist.Elevation="Dp0"
+									Content="Гимнастика" 
+									Margin="5"/>
+						</StackPanel>
+					</materialDesign:PopupBox>
+				</StackPanel>
 			</Grid>
 		</materialDesign:DialogHost>
 	</Grid>

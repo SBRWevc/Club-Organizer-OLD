@@ -17,7 +17,6 @@ namespace Club_Organizer.Pages
 		{
 			InitializeComponent();
 
-			// - Языковые настройки для полей - \\
 			InputLanguageManager.SetInputLanguage(auth_login, CultureInfo.CreateSpecificCulture("en"));
 			InputLanguageManager.SetInputLanguage(auth_pass, CultureInfo.CreateSpecificCulture("en"));
 		}
@@ -118,14 +117,11 @@ namespace Club_Organizer.Pages
 		{
 			CL_auth.ok = false;
 
-			// - Авторизация- \\
-
 			login_text = auth_login.Text.Trim().ToLower();
 			pass_text = auth_pass.Password.Trim().ToLower();
 
 			CL_auth.auth();
 
-			// - Успешная авторизация - \\
 			if (CL_auth.ok == true)
 			{
 				MainWindow.suc_auth();
@@ -137,7 +133,6 @@ namespace Club_Organizer.Pages
 				pass_text = null;
 			}
 
-			// - Ошибка данных - \\
 			else
 			{
 				dialog_auth.IsOpen = true;

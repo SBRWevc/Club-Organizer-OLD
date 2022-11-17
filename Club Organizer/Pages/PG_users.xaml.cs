@@ -16,7 +16,6 @@ namespace Club_Organizer.Pages
 {
 	public partial class PG_users : Page
 	{
-		// -Переменные- \\
 		public static string lastname_text = null;
 		public static string name_text = null;
 		public static string secondname_text = null;
@@ -26,7 +25,6 @@ namespace Club_Organizer.Pages
 		public static string pass_text = null;
 		public static int root_text = 0;
 
-		// -Подключение БД- \\
 		string conn = @"Data Source=DB/users.db;Version=3;";
 		public static DataTable dt_users = new DataTable();
 
@@ -43,7 +41,6 @@ namespace Club_Organizer.Pages
 			InputLanguageManager.SetInputLanguage(position, CultureInfo.CreateSpecificCulture("ru"));
 		}
 
-		// -Процесс обновления строк- \\
 		private async void datatext()
 		{
 			while (true)
@@ -56,7 +53,6 @@ namespace Club_Organizer.Pages
 			}
 		}
 
-		// -Процесс обновления данных в таблице- \\
 		public void data_update()
 		{
 			dt_users = new DataTable();
@@ -64,14 +60,12 @@ namespace Club_Organizer.Pages
 			data_users.ItemsSource = dt_users.AsDataView();
 		}
 
-		// -Кнопка обновления данных в таблице- \\
 		private void users_update_Click(object sender, RoutedEventArgs e)
 		{
 			dt_users = new DataTable();
 			data_update();
 		}
 
-		// -Кнопка записи данных из таблицы в БД- \\ 
 		private void users_check_Click(object sender, RoutedEventArgs e)
 		{
 			CL_users_info_update.update_users_info();
@@ -79,21 +73,18 @@ namespace Club_Organizer.Pages
 			data_update();
 		}
 
-		// -Кнопка смены аватара (муж)- \\
 		private void gender_man_Click(object sender, RoutedEventArgs e)
 		{
 			avatar_left.Source = new BitmapImage(new Uri("/res/avatar/man.png", UriKind.Relative));
 			gender_text = "муж";
 		}
 
-		// -Кнопка смены аватара (жен)- \\
 		private void gender_woman_Click(object sender, RoutedEventArgs e)
 		{
 			avatar_left.Source = new BitmapImage(new Uri("/res/avatar/woman.png", UriKind.Relative));
 			gender_text = "жен";
 		}
 
-		// -Кнопка создания нового пользователя- \\
 		private async void add_user_Click(object sender, RoutedEventArgs e)
 		{
 			lastname_text = lastname.Text.Trim();
@@ -192,7 +183,6 @@ namespace Club_Organizer.Pages
 			}
 		}
 
-		// -Кнопка удаления сотрудника- \\
 		private void users_delete_Click(object sender, RoutedEventArgs e)
 		{
 			if (data_users.SelectedItem == null)
@@ -214,7 +204,6 @@ namespace Club_Organizer.Pages
 			}
 		}
 
-		// - Очистка формы ввода данных - \\
 		private void add_user_dialog_DialogClosing(object sender, MaterialDesignThemes.Wpf.DialogClosingEventArgs eventArgs)
 		{
 			lastname.Text = "";

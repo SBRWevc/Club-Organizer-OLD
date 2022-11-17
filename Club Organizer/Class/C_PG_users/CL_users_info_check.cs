@@ -5,25 +5,23 @@ namespace Club_Organizer.Class.C_PG_users
 {
 	internal class CL_users_info_check
 	{
-		// - Переменные - \\
 		public static bool ok;
 
-		// - Проверка свободного логина - \\
 		public static void checkinfo()
 		{
-			string db_conn = @"Data Source=DB/users.db;Version=3;";
-			string query_test = "SELECT Логин FROM userdata WHERE Логин=@login";
+			string conn = @"Data Source=DB/users.db;Version=3;";
+			string query = "SELECT Логин FROM userdata WHERE Логин=@login";
 			string login = Pages.PG_users.login_text;
 
-			SQLiteConnection conn = new SQLiteConnection(db_conn);
-			conn.Open();
-			SQLiteCommand cmd_test = new SQLiteCommand(query_test, conn);
-			cmd_test.Parameters.AddWithValue("@login", login);
-			SQLiteDataAdapter da_test = new SQLiteDataAdapter(cmd_test);
-			DataTable dt_test = new DataTable();
-			da_test.Fill(dt_test);
+			SQLiteConnection db_conn = new SQLiteConnection(conn);
+			db_conn.Open();
+			SQLiteCommand cmd = new SQLiteCommand(query, db_conn);
+			cmd.Parameters.AddWithValue("@login", login);
+			SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
 
-			if (dt_test.Rows.Count > 0)
+			if (dt.Rows.Count > 0)
 			{
 				ok = false;
 			}

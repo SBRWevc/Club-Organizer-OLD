@@ -9,26 +9,22 @@ namespace Club_Organizer.Class
 {
 	internal class CL_auth
 	{
-		// - Обращения и команды к БД - \\
-		static string conn_users = @"Data Source=DB/users.db;Version=3;";
-		static string query_users = "SELECT * FROM userdata WHERE Логин=@login AND Пароль=@pass";
+		static string conn = @"Data Source=DB/users.db;Version=3;";
+		static string query = "SELECT * FROM userdata WHERE Логин=@login AND Пароль=@pass";
 		
-		// - Переменные - \\
 		static string login = null;
 		static string pass = null;
 		public static int id = 0;
-
 		public static bool ok;
 
-		// - Авторизация - \\
 		public static void auth()
 		{
 			login = PG_auth.login_text;
 			pass = hashPass(PG_auth.pass_text);
 
-			SQLiteConnection conn = new SQLiteConnection(conn_users);
-			conn.Open();
-			SQLiteCommand cmd = new SQLiteCommand(query_users, conn);
+			SQLiteConnection db_conn = new SQLiteConnection(conn);
+			db_conn.Open();
+			SQLiteCommand cmd = new SQLiteCommand(query, db_conn);
 			cmd.Parameters.AddWithValue("@login", login);
 			cmd.Parameters.AddWithValue("@pass", pass);
 			SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
@@ -46,12 +42,11 @@ namespace Club_Organizer.Class
 
 				ok = true;
 				dt.Rows.Clear();
-				conn.Close();
+				db_conn.Close();
 			}
 		}
 
-		// - Хеширование пароля - \\
-		public static string hashPass(string password)
+		private static string hashPass(string password)
 		{
 			MD5 md5 = MD5.Create();
 

@@ -12,11 +12,27 @@ namespace Club_Organizer.Frames
 	public partial class FR_add_contract : Page
 	{
 		public static string fullname = null;
+		public static string lastname_text = null;
+		public static string name_text = null;
+		public static string secondname_text = null;
+		public static string fullname_text = null;
+		public static string passport_num_text = null;
+		public static string passport_date_text = null;
+		public static string passport_who_text = null;
+		public static string city_text = null;
+		public static string street_text = null;
+		public static string house_text = null;
+		public static string subhouse_text = null;
+		public static string flat_text = null;
+		public static string phone_text = null;
+		public static string email_text = null;
+		public static string birthday_text = null;
 
 		public FR_add_contract()
 		{
 			InitializeComponent();
 			BindComboBox(search_client);
+			frame_service_info.Navigate(new FR_service_tennis());
 		}
 
 		private void BindComboBox(ComboBox comboBoxName)
@@ -52,7 +68,7 @@ namespace Club_Organizer.Frames
 
 					lastname.Text = CL_fill_client_info.lastname;
 					name.Text = CL_fill_client_info.name;
-					secontname.Text = CL_fill_client_info.secondname;
+					secondname.Text = CL_fill_client_info.secondname;
 					passport_num.Text = CL_fill_client_info.passport;
 					passport_date.Text = CL_fill_client_info.passport_date;
 					passport_who.Text = CL_fill_client_info.passport_who;
@@ -86,7 +102,7 @@ namespace Club_Organizer.Frames
 		{
 			lastname.Text = "";
 			name.Text = "";
-			secontname.Text = "";
+			secondname.Text = "";
 			passport_num.Text = "";
 			passport_date.Text = "";
 			passport_who.Text = "";
@@ -102,7 +118,26 @@ namespace Club_Organizer.Frames
 
 		private void write_new_client_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
+			lastname_text = lastname.Text.Trim();
+			name_text = name.Text.Trim();
+			secondname_text = secondname.Text.Trim();
+			fullname_text = lastname.Text.Trim() + " " +
+				name.Text.Substring(0, name.Text.Length - name.Text.Length + 1) + "." +
+				secondname.Text.Substring(0, secondname.Text.Length - secondname.Text.Length + 1) + ".";
+			passport_num_text = passport_num.Text.Trim();
+			passport_date_text = passport_date.Text.Trim();
+			passport_who_text = passport_who.Text.Trim();
+			city_text = city.Text.Trim();
+			street_text = street.Text.Trim();
+			house_text = house.Text.Trim();
+			subhouse_text = subhouse.Text.Trim();
+			flat_text = flat.Text.Trim();
+			phone_text = phone.Text.Trim();
+			email_text = email.Text.Trim();
+			birthday_text = birthday.Text.Trim();
 
+			CL_new_client.new_client();
+			BindComboBox(search_client);
 		}
 	}
 }

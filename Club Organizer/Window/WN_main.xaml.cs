@@ -4,12 +4,9 @@ using MahApps.Metro.Controls;
 using System;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
-using System.Web;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Net;
 
 namespace Club_Organizer
 {
@@ -305,8 +302,6 @@ namespace Club_Organizer
 			CL_userdata.clerdatauser();
 		}
 
-
-		// - Субкнопки - \\
 		// - Вкладка пользователей - \\
 		private void users_page_Click(object sender, RoutedEventArgs e)
 		{
@@ -340,8 +335,6 @@ namespace Club_Organizer
 			}
 		}
 
-
-		// - Работа с профилем текущего пользователя - \\
 		// - Кнопка обновления данных пользователя - \\
 		private void profile_save_button_Click(object sender, RoutedEventArgs e)
 		{
